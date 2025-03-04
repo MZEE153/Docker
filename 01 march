@@ -1,0 +1,141 @@
+🚀 Mastering Docker Images & Networks
+🗓️ Date: 01 Mar 2025
+
+This guide will help you manage Docker images, networks, and containers interactively! 🎯
+
+🖼️ Docker Images - Managing & Running
+📌 View All Pulled Images
+🛠️ Check which images are available on your system:
+
+bash
+Copy
+Edit
+docker image ls
+🔍 Expected Output Example:
+
+nginx
+Copy
+Edit
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE  
+nginx        latest    76c69feac34e   2 weeks ago   23MB  
+🗑️ Remove an Image
+🛠️ Delete an image using its name or ID:
+
+bash
+Copy
+Edit
+docker image rm nginx
+📌 If there are multiple images with the same name, use the Tag:
+
+bash
+Copy
+Edit
+docker image rm nginx:latest
+✅ Check again:
+
+bash
+Copy
+Edit
+docker image ls
+🚀 Run a Container from an Image
+Create a new container with a specific image tag:
+
+bash
+Copy
+Edit
+docker run -d --name Mzee nginx:[tag]
+💡 Example using the latest version:
+
+bash
+Copy
+Edit
+docker run -d --name Mzee nginx:latest
+✅ Verify if it's running:
+
+bash
+Copy
+Edit
+docker ps
+🌐 Docker Networks - Creating & Managing
+📌 View All Available Networks
+bash
+Copy
+Edit
+docker network ls
+🔍 Example Output:
+
+sql
+Copy
+Edit
+NETWORK ID    NAME             DRIVER    SCOPE  
+76c69fea      bridge           bridge    local  
+ac47fead      host             host      local  
+d2a3c52f      none             null      local  
+🌟 Create a Custom Network
+🛠️ Create a new bridge network named dining-network:
+
+bash
+Copy
+Edit
+docker network create --driver bridge dining-network
+✅ Verify if the network is created:
+
+bash
+Copy
+Edit
+docker network ls
+🗑️ Remove a Network
+🛠️ Delete a network by name or ID:
+
+bash
+Copy
+Edit
+docker network rm 726920f2b0ca
+✅ Verify removal:
+
+bash
+Copy
+Edit
+docker network ls
+🔗 Mapping Containers with Networks
+🚀 Run a New Container on a Specific Network
+bash
+Copy
+Edit
+docker run -d --network dining-network --name zee1 nginx
+✅ Check if it's connected:
+
+bash
+Copy
+Edit
+docker network inspect dining-network
+🔄 Attach an Existing Container to a Network
+bash
+Copy
+Edit
+docker network connect dining-network existing-container
+✅ Check container-network mapping:
+
+bash
+Copy
+Edit
+docker network inspect dining-network
+📊 Displaying Network Mappings
+📌 List Containers & Their Networks in a Table Format
+bash
+Copy
+Edit
+docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}"
+📌 List All Networks in a Table Format
+bash
+Copy
+Edit
+docker network ls --format "table {{.ID}}\t{{.Networks}}"
+🎯 You’ve now mastered Docker images, networks, and container management! 🚀
+
+🔹 Next Steps?
+
+Try mapping multiple containers to the same network
+Use docker logs to check container logs
+Push an image to Docker Hub
+Let me know if you want to add real-world scenarios or examples! 🎯
